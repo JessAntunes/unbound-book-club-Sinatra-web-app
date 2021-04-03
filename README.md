@@ -1,7 +1,7 @@
-# UNBOUNDED Book Club
+# UNBOUND Book Club
 
 ## Who is the user?
-This web app is designed for an individual or group of users who would like to have a book club, but without the constraining rules. Users save their books and lists for their own use or for friends to view. If the user is in a book club this allows for all the members to connect with each other on UNBOUNDED Book Club and view each others lists either for inspiration for a new book or to see who has read the book they just finished. Now the user knows which friend to message to start discussing the book on their favorite messaging app. 
+This web app is designed for an individual or group of users who would like to have a book club, but without the constraining rules. Users save their books and lists for their own use or for friends to view. If the user is in a book club this allows for all the members to connect with each other on UNBOUND Book Club and view each others lists either for inspiration for a new book or to see who has read the book they just finished. Now the user knows which friend to message to start discussing the book on their favorite messaging app. 
 
 Unbound Book Club gives book clubs the freedom to make their own rules. Each user can read any book they want and take as long as they want to read it. Discussions can happen on their own terms. This app is for busy people who want to make their own rules.
  <br><br>
