@@ -2,9 +2,9 @@ require './config/environment'
 
 class BookController < Sinatra::Base
 
-#   get "/:book" do
-#     @book = Book.find_by(params[:book])
-#     erb :book
-#   end
+  get "/newbook" do
+    @book = Book.new(params[:title])
+    erb :"/book/:id"
+  end
 
 end
