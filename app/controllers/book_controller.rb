@@ -4,7 +4,7 @@ class BookController < Sinatra::Base
 
   get "/newbook" do
     @book = Book.new(params[:title])
-    erb :"/book/:id"
+    erb :book
   end
 
 end
