@@ -4,12 +4,12 @@ class BookController < Sinatra::Base
 
     get "/newbook" do
         @book = Book.new(params[:title])
-        erb :book
+        erb :newbook
     end
 
     post "/newbook"
         @book = Book.new(params[:title])
-        redirect "/book/:id"
+        erb "/book/:id"
     end
 
 end
