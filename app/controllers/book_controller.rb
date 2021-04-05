@@ -2,11 +2,11 @@ require './config/environment'
 
 class BookController < Sinatra::Base
 
-    get "/book/new" do
+    get "/books/new" do
         erb :"/views/new_book"
     end
 
-    post "/book/:id"
+    post "/books/:id"
         @book = Book.new(params[:title])
         erb :'/view/book'
     end
