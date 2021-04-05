@@ -2,6 +2,10 @@
 
 <h1><%= @book.title %></h1>
 
+<%@book.each do |key, value|%>
+<p><%=key%>: <%=value%></p>
+<%end%>
+
 
 
 

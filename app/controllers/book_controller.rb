@@ -1,14 +1,27 @@
 require './config/environment'
 
-class BookController < Sinatra::Base
+class BookController < ApplicationController
 
-    get "/books/new" do
-        erb :"/views/new_book"
+    get '/books' do
+        erb :display_books
     end
 
-    post "/books/:id"
-        @book = Book.new(params[:title])
-        erb :'/view/book'
+    get "/books/new" do
+        erb :new_book
+    end
+
+    get '/books/:id' do
+        @book = Book.find(params[:id])
+        erb :book
+    end
+
+    post "/books" do
+        @book = Book.new
+        @book.title = params[:title]
+        @book.author = params[:author]
+        @book.read = params[:read]
+        @book.save
+       redirect "/books/#{@book.id}"
     end
 
 end

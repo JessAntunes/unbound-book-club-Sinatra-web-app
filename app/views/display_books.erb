@@ -1,0 +1,7 @@
+
+
+<h1>Here are a list of books</h1>
+
+<%Book.all.each.with_index(1) do |i, book|%>
+<h3><%=i%>: <%=book.title%></h3>
+<%end%>
