@@ -3,25 +3,23 @@ require './config/environment'
 class BookController < ApplicationController
 
     get '/books' do
-        erb :display_books
-    end
-
-    get "/books/new" do
-        erb :new_book
-    end
-
-    get '/books/:id' do
-        @book = Book.find(params[:id])
-        erb :book
+        erb :"/Book/display_books"
     end
 
     post "/books" do
-        @book = Book.new
-        @book.title = params[:title]
-        @book.author = params[:author]
-        @book.read = params[:read]
-        @book.save
-       redirect "/books/#{@book.id}"
+        book = Book.create(params)
+        redirect "/books/#{@book.id}"
     end
+
+    get "/books/new" do
+        erb :"/Book/new_book"
+    end
+
+    get '/books/:id' do
+        book = Book.find(params[:id])
+        erb :"/Book/book"
+    end
+
+    
 
 end
