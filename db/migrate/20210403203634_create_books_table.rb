@@ -3,10 +3,11 @@ class CreateBooksTable < ActiveRecord::Migration
     create_table :books do |t|
       t.string :title
       t.string :author
-      t.boolean :read
+      t.string :genre
+      t.boolean :read, default: false
       t.datetime :published_date
       t.string :description
-      t.string :link
+      
     end
   end
 end
