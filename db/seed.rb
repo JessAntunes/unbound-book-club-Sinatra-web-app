@@ -1,17 +1,33 @@
-book_description = Faker::GreekPhilosophers.quote
-published_date = Faker::Date.between(from: '1880-09-23', to: '2020-09-25')
-Faker::Book.title
-Faker::Book.author
-Faker::Book.genre
+(1..40).each do |id|  
+    Book.create!(
+        title: Faker::Book.title,
+        author: Faker::Book.author,
+        genre: Faker::Book.genre,
+        read: [true, false].sample,
+        published_date: Faker::Date.between(from: '1880-09-23', to: '2020-09-25'),
+        description: Faker::GreekPhilosophers.quote
+    )   
+end
 
-list_name = Faker::Commerce.department
-book_id Faker::Number.between(from: 1, to: 20)
-user_id Faker::Number.between(from: 1, to: 20)
+(1..50).each do |id|  
+    List.create!(
+        name: Faker::Commerce.department,
+        book_id: rand(1..40),
+        user_id: rand(1..20)
+    )
+    
+end
 
-library
-user_id Faker::Number.between(from: 1, to: 20)
-book_id Faker::Number.between(from: 1, to: 20)
+(1..100).each do |id|
+    Library.create!(
+        user_id: rand(1..20),
+        book_id: rand(1..40)
+    )
+end
 
-user
-username = Faker::Internet.username
-password = username
+(1..20).each do |id|
+    User.create!(
+        username: Faker::Internet.username
+        password_digest: "password123"
+    )
+end
