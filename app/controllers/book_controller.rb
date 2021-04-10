@@ -27,7 +27,7 @@ class BookController < ApplicationController
       end 
     
       patch '/books/:id' do 
-        @book = Book.find_by_id(params[:id])
+        @book = Book.find(params[:id])
         @book.update(params)
         redirect to "/books/#{@book.id}"
       end
