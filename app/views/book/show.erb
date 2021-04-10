@@ -7,7 +7,12 @@
 
 <p>Published: <%=@book.published_date%></p>
 
-<p>Read: <%=@book.read%></p>
+<p>Read: 
+<if @book.read == true>
+    <p> yes </p>
+<else>
+    <p> no </p>
+<%end%>
 
 <p>Description: <%=@book.description%></p>
 
