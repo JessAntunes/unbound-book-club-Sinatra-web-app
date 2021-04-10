@@ -29,12 +29,6 @@ class ApplicationController < Sinatra::Base
 
   end
 
-  get '/account' do
-    @user = current_user
-    erb :account
-  end
-
-
   get "/login" do
     erb :login
   end
@@ -43,7 +37,7 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/login"
+      redirect "/user/#{user.id}"
     else
       redirect "/signup"
     end
