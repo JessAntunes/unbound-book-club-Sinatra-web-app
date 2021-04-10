@@ -1,10 +1,8 @@
 
-<h1><%= @book.title %></h1>
+<h1>Here are a list of books</h1>
 
-<p>Author: <%=@book.author%></p>
-
-<p>Read: <%=@book.read%></p>
-
-
+<%@books.each do |book|%>
+<p><a href="/books/<%=book.id%>"><%=book.id%>: <%=book.name%></a></p>
+<%end%>
 
 

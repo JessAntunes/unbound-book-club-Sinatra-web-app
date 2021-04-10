@@ -1,7 +1,6 @@
 
+<h1><%= @book.title %></h1>
 
-<h1>Here are a list of books</h1>
+<p>Author: <%=@book.author%></p>
 
-<%Book.all.each.with_index(1) do |i, book|%>
-<h3><%=i%>: <%=book.title%></h3>
-<%end%>
+<p>Read: <%=@book.read%></p>
