@@ -13,7 +13,7 @@ class FriendController < ApplicationController
     post '/friends' do 
         @user = current_user
         if friend = User.find_by(username: params[:username])
-            @friend = create(user_id: @user.id, friend_id: friend.id)
+            @friend = Friend.create(user_id: @user.id, friend_id: friend.id)
             redirect "/friends/#{@friend.id}"
         else
             redirect '/nomatch'

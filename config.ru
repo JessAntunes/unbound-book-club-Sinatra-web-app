@@ -11,4 +11,5 @@ use ListController
 use BookController
 use UserController
 use LibraryController
+use FriendController
 use Rack::MethodOverride

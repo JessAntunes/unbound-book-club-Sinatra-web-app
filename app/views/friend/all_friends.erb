@@ -1,7 +1,7 @@
 <h1> Here are all your friends: </h1>
 
 <%@user.friends.each do |friend|%>
-<p><a href='/friends/#{friend.id}'><%=friend.username%></a></p>
+<p><a href='/friends/<%=friend.friend_id%>'><%=User.find(friend.friend_id).username%></a></p>
 <%end%>
 
 <form action="/friends/new">
