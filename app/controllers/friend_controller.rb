@@ -81,11 +81,11 @@ class FriendController < ApplicationController
         redirect to '/friends'
     end
 
-    get '/notfriends'
+    get '/notfriends' do
         erb :'friend/not_friends'
     end
 
-    get '/nomatch'
+    get '/nomatch' do
         erb :'friend/no_match'
     end
  

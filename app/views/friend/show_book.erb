@@ -1,0 +1,30 @@
+<form action="/logout">
+    <input type="submit" value="Log Out" />
+</form>
+
+<h1><%=@friend.username.capitalize%>'s Library</h1>
+
+<h3><%= @book.title %></h1>
+
+<h3>Author: <%=@book.author%></h3>
+
+<h4>Genre: </h4><p><%=@book.genre%></p>
+
+<h4>Published: </h4><p><%=@book.published_date%></p>
+
+<%if @library.read == true%>
+    <h4> Read:</h4><p> yes </p>
+<%else%>
+   <h4> Read:</h4><p> no </p>
+<%end%>
+
+<h4>Description: <h4>
+
+<p><%=@book.description%></p>
+
+<h4>Notes: </h4>
+<%if @library.notes != nil%>
+    <p><%= @library.notes %><p>
+<%else%>
+    <p>(no notes)</p>
+<%end%>
