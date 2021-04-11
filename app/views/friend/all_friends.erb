@@ -1,0 +1,9 @@
+<h1> Here are all your friends: </h1>
+
+<%@user.friends.each do |friend|%>
+<p><a href='/friends/#{friend.id}'><%=friend.username%></a></p>
+<%end%>
+
+<form action="/friends/new">
+    <input type="submit" value="Add Friend" />
+</form>
