@@ -10,4 +10,5 @@ run ApplicationController
 use ListController
 use BookController
 use UserController
+use LibraryController
 use Rack::MethodOverride
