@@ -1,0 +1,10 @@
+<form action="/logout">
+    <input type="submit" value="Log Out" />
+</form>
+
+
+<h1> @list.name </h1>
+
+<%@list.books(@friend.id, @list.name).each do |book| %>
+<p><a href="users/<%=@user.id%>/books/<%=book.id%>"><%=book.title%></a></p>
+<%end%>

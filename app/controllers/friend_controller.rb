@@ -9,6 +9,16 @@ class FriendController < ApplicationController
         @user = current_user
         erb :'friend/new'
     end
+
+    post '/friends' do 
+        @user = current_user
+        if friend = User.find_by(username: params[:username])
+            @friend = create(user_id: @user.id, friend_id: friend.id)
+            redirect "/friends/#{@friend.id}"
+        else
+            redirect '/nomatch'
+        end
+    end
     
     get '/friends/:friend_id' do
         @user = current_user
@@ -37,16 +47,6 @@ class FriendController < ApplicationController
             erb :'friend/list_index'
         else 
             redirect '/notfriends'
-        end
-    end
-
-    post '/friends' do 
-        @user = current_user
-        if friend = User.find_by(username: params[:username])
-            @friend = create(user_id: @user.id, friend_id: friend.id)
-            redirect "/friends/#{@friend.id}"
-        else
-            redirect '/nomatch'
         end
     end
 
