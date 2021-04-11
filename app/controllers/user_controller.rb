@@ -1,4 +1,4 @@
-require './config/environment'
+
 
 class UserController < ApplicationController
 
@@ -7,6 +7,6 @@ class UserController < ApplicationController
         erb :'user/index'
     end
 
-    
+
 
 end

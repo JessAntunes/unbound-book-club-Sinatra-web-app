@@ -1,4 +1,4 @@
-require './config/environment'
+
 
 class BookController < ApplicationController
 
