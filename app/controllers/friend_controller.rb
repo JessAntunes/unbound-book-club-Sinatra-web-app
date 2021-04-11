@@ -40,11 +40,35 @@ class FriendController < ApplicationController
         end
     end
 
+    get "/friends/:friend_id/library/:book_id" do
+        @user = current_user
+        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
+            @friend = User.find(params[:friend_id])
+            @book = Book.find(params[:book_id])
+            @library = Library.find_by(user_id: @friend.id, book_id: @book_id) 
+            erb :'friend/show_book'
+        else 
+            redirect '/notfriends'
+        end
+    end 
+
     get "/friends/:friend_id/lists" do
         @user = current_user
         if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
             @friend = User.find(params[:friend_id])
+            @lists = List.find_by(user_id: @friend.id)
             erb :'friend/list_index'
+        else 
+            redirect '/notfriends'
+        end
+    end
+
+    get "/friends/:friend_id/lists/:list_id" do
+        @user = current_user
+        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
+            @friend = User.find(params[:friend_id])
+            @list = List.find(params[:list_id])
+            erb :'friend/show_list'
         else 
             redirect '/notfriends'
         end
