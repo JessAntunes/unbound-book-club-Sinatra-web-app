@@ -1,0 +1,11 @@
+<h1>Welcome to <%=@friend.username.capitalize%>'s Page </h1>
+
+<h4>What would you like to do?</h4>
+
+<form action="/friends/library">
+    <input type="submit" value="View <%=@friend.username.capitalize%>'s Library" />
+</form>
+
+<form action="/friends/lists">
+    <input type="submit" value="View <%=@friend.username.capitalize%>'s Lists" />
+</form>

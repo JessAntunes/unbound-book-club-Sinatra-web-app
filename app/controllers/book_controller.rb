@@ -42,5 +42,6 @@ class BookController < ApplicationController
         @book.update(params)
         redirect to "/books/#{@book.id}"
       end
+      
     
 end
