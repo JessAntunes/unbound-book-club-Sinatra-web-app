@@ -1,0 +1,5 @@
+<h1><%=@user.username.capitalize%>'s Lists</h1>
+
+<%@user.lists.each do |list|%>
+<p><a href="users/<%=@user.id%>/lists"><<%=list.name%></a></p>
+<%end%>
