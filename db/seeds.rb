@@ -3,7 +3,6 @@
         title: Faker::Book.title,
         author: Faker::Book.author,
         genre: Faker::Book.genre,
-        read: [true, false].sample,
         published_date: Faker::Date.between(from: '1880-09-23', to: '2020-09-25'),
         description: Faker::GreekPhilosophers.quote
     )   
@@ -21,7 +20,8 @@ end
 (1..100).each do |id|
     Library.create!(
         user_id: rand(1..20),
-        book_id: rand(1..40)
+        book_id: rand(1..40),
+        read: [true, false].sample,
     )
 end
 

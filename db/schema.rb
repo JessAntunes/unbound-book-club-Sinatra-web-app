@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_203634) do
+ActiveRecord::Schema.define(version: 2021_04_11_023750) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
     t.string "genre"
-    t.boolean "read", default: false
     t.datetime "published_date"
     t.string "description"
   end
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_203634) do
   create_table "libraries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
+    t.boolean "read", default: false
   end
 
   create_table "lists", force: :cascade do |t|

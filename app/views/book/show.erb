@@ -3,16 +3,18 @@
 
 <h3>Author: <%=@book.author%></h3>
 
-<p>Genre: <%=@book.genre%></p>
+<h4>Genre: </h4><p><%=@book.genre%></p>
 
-<p>Published: <%=@book.published_date%></p>
+<h4>Published: </h4><p><%=@book.published_date%></p>
 
  
 <%if @book.read == true%>
-    <p>Read: yes </p>
+    <h4> Read:</h4><p> yes </p>
 <%else%>
-    <p>Read: no </p>
+   <h4> Read:</h4><p> no </p>
 <%end%>
 
-<p>Description: <%=@book.description%></p>
+<h4>Description: <h4>
+
+<p><%=@book.description%></p>
 

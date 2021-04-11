@@ -5,7 +5,9 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 
+
 run ApplicationController
 use ListController
 use BookController
 use UserController
+use Rack::MethodOverride

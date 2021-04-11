@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
 
   configure do
     set :public_folder, 'public'
-    set :views, 'app/views'
+    set :views, Proc.new { File.join(root, "../views/") }
     enable :sessions
     set :session_secret, "Anti_book_club_book_club"
   end
@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/user/#{user.id}"
+      redirect "/users/#{user.id}"
     else
       redirect "/signup"
     end
