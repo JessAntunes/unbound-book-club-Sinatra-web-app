@@ -21,7 +21,7 @@ end
     Library.create!(
         user_id: rand(1..20),
         book_id: rand(1..40),
-        read: [true, false].sample,
+        read: [true, false].sample
     )
 end
 
