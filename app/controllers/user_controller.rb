@@ -7,4 +7,6 @@ class UserController < ApplicationController
         erb :'user/index'
     end
 
+    
+
 end

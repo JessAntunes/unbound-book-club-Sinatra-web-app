@@ -8,7 +8,12 @@ class BookController < ApplicationController
       end 
     
       get '/books/new' do 
-        erb :'book/new'
+        user = current_user
+        if user.logged_in?
+          erb :'book/new'
+        else
+          redirect '/login'
+        end
       end
     
       post '/books' do 
@@ -22,8 +27,14 @@ class BookController < ApplicationController
       end 
     
       get '/books/:id/edit' do 
-        @book = Book.find_by_id(params[:id])
-        erb :'book/edit'
+        user = current_user
+        if user.logged_in?
+          @book = Book.find_by_id(params[:id])
+          erb :'book/edit'
+        else
+          redirect '/login'
+        end
+        
       end 
     
       patch '/books/:id' do 
@@ -32,12 +43,4 @@ class BookController < ApplicationController
         redirect to "/books/#{@book.id}"
       end
     
-      delete '/books/:id' do 
-        @book = Book.find_by_id(params[:id])
-        @book.delete
-        redirect to '/books'
-      end
-
-    
-
 end
