@@ -28,6 +28,7 @@ end
 (1..20).each do |id|
     User.create!(
         username: Faker::Internet.username,
-        password_digest: "password123"
+        password_digest: "#{User.digest('password123')}"
     )
 end
+

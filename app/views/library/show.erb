@@ -1,3 +1,7 @@
+<form action="/logout">
+    <input type="submit" value="Log Out" />
+</form>
+
 <h1><%=@user.username.capitalize%>'s Library</h1>
 
 <h3><%= @book.title %></h1>
@@ -8,7 +12,6 @@
 
 <h4>Published: </h4><p><%=@book.published_date%></p>
 
-// <%@library = Library.find_by(user_id: @user.id, book_id: @book._id) %> put in controller
 <%if @library.read == true%>
     <h4> Read:</h4><p> yes </p>
 <%else%>

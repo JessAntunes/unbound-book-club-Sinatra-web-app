@@ -1,8 +1,10 @@
+<form action="/logout">
+    <input type="submit" value="Log Out" />
+</form>
+
 <h1><%=@user.username.capitalize%>'s Lists</h1>
 
 <%@user.lists.each do |list|%>
-<p><a href="users/<%=@user.id%>/lists/<%=list.id%>"><<%=list.name%></a></p>
+<p><a href="/lists/<%=list.id%>"><<%=list.name%></a></p>
 <%end%>
 
-// list.id will not work with finding the list as it will be a collection of multiple books
-// only list name and user id keeps the books organized

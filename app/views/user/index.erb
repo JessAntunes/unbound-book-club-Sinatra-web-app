@@ -1,14 +1,18 @@
-<h1> Welcome, <%=@user.username%>!</h1>
+<h1> Welcome, <%=@user.username.capitalize%>!</h1>
 <br> 
 <br>
 
 <h3>What would you like to do?</h3>
 
 
- <form action="/user/:id/library">
+ <form action="/library">
     <input type="submit" value="View My Library" />
 </form>
 
-<form action="/user/:id/lists">
+<form action="/lists">
     <input type="submit" value="View My Lists" />
+</form>
+
+<form action="/logout">
+    <input type="submit" value="Log Out" />
 </form>
