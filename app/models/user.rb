@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
       BCrypt::Password.create(string, cost: cost)
   end
 
+
+   def lists
+      List.all.map do |l|
+         l.user_id == self.id
+      end
+   end
+
 end

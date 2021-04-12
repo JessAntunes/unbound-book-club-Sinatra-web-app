@@ -9,7 +9,7 @@ class ListController < ApplicationController
 
     get 'lists/:list_id' do
         @user = current_user
-        @list = List.find(params[:list_id])
+        @lists = List.find(params[:list_id])
         erb :'list/show'
     end
 
