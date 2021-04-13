@@ -40,7 +40,7 @@ class FriendController < ApplicationController
         end
     end
 
-    get "/friends/library/:book_id" do
+    get "/friends/:user2_id/library/:book_id" do
         @user = current_user
         @friend = User.find(params[:user2_id])
         if  @friend.friends.where(friend_id: @user.id)
