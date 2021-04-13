@@ -30,8 +30,9 @@
         <input type="submit" value="Edit Book" />
     </form>
 
-<form action="/library/<%= @book.id%>/delete">
-    <input type="submit" value="Delete Book" />
+<form action="/lists/<%= @list.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Remove Book">
 </form>
 
 
