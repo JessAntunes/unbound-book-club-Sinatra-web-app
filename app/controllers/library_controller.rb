@@ -15,14 +15,13 @@ class LibraryController < ApplicationController
     get '/library/:book_id' do
         @user = current_user
         @book = Book.find(params[:book_id])
-        @library = Library.find_by(user_id: @user.id, book_id: @book_id) 
         erb :'library/show'
     end
 
     post '/library' do
         @book = Book.find_or_create_by(title: params[:title], author: params[:author])
         binding.pry
-        # @library = Library.create(user_id: current_user.id, book_id: @book.id, read: params[:read], notes: params[:notes])
+        @library = Library.create(user_id: current_user.id, book_id: @book.id)
         redirect '/library/#{@book.id}'
     end
 
@@ -31,13 +30,14 @@ class LibraryController < ApplicationController
     end
 
     patch '/library/:book_id' do
-        @library = Library.find_by(user_id: current_user.id, book_id: params[:book_id])
-        @library.update(read: params[:read], notes: params[:notes])
+        book = Book.find(params[:book_id])
+        book.update(params)
         redirect '/library/#{book.id}'
     end
 
     delete '/library/:book_id' do
-        @library.delete
+        book.find(params[:book_id])
+        book.delete
         redirect '/library'
     end
 

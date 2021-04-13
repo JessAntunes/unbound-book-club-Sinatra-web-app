@@ -11,7 +11,8 @@ Library.delete_all
         genre: Faker::Book.genre,
         published_date: Faker::Date.between(from: '1880-09-23', to: '2020-09-25'),
         read: [true, false].sample,
-        description: Faker::GreekPhilosophers.quote
+        description: Faker::GreekPhilosophers.quote,
+        notes: Faker::TvShows::NewGirl.quote 
     
     )   
 end
@@ -39,3 +40,4 @@ end
     )
 end
 
+puts "Seeded and Succeeded!"

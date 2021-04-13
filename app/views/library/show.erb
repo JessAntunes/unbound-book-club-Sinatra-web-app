@@ -12,11 +12,11 @@
 
 <h4>Published: </h4><p><%=@book.published_date%></p>
 
- <%#if @library.read == true%>
+ <%if @book.read == true%>
   <h4> Read:</h4><p> yes </p> 
-<%#else%>
+<%else%>
      <h4> Read:</h4><p> no </p>
- <%#end%>
+ <%end%>
 
 <h4>Description: <h4>
 
@@ -24,7 +24,7 @@
 
 <h4>Notes: </h4>
 
-    <p><%= @library.notes %><p>
+    <p><%= @book.notes %><p>
 
 
 
