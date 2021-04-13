@@ -3,10 +3,11 @@
 </form>
 
 
-<h1> @list.name </h1>
+<h1><%=@list.name%></h1>
 
-<%@user.lists.where(name: @list.name).each do |list| %>
-<%book = @user.books.where(list.book_id)%>
-<p><a href="/library/<%=book.id%>"><%=book.title%></a></p>
+<%@user.lists.each do |list| %>
+<%if list.name == @list.name%>
+<p><a href="/library/<%=list.book.id%>"><%=list.book.title%></a></p>
+<%end%>
 <%end%>
 

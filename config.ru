@@ -5,11 +5,10 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 
-
+use Rack::MethodOverride
 run ApplicationController
 use ListController
 use BookController
 use UserController
 use LibraryController
 use FriendController
-use Rack::MethodOverride

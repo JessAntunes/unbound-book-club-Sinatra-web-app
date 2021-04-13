@@ -8,6 +8,10 @@
 <p><a href="/library/<%=book.id%>"><%=book.title%></a></p>
 <%end%>
 
+<form action="/library/new">
+    <input type="submit" value="New Book" />
+</form>
+
 <form action="/library" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete Entire Library">

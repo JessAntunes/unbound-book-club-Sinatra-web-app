@@ -12,9 +12,16 @@ class ListController < ApplicationController
         erb :'list/new'
     end
 
-    get 'lists/:list_id' do
+    get '/lists/:id/new' do
         @user = current_user
-        @list = List.find(params[:list_id])
+        @list = List.find(params[:id])
+        erb :'list/add_book'
+    end
+
+    get '/lists/:id' do
+        # binding.pry
+        @user = current_user
+        @list = List.find(params[:id])
         erb :'list/show'
     end
 
@@ -25,8 +32,16 @@ class ListController < ApplicationController
         redirect '/lists/#{@list.id}'
     end
 
-    delete '/lists/:list_id' do
-        list.find(params[:list_id])
+    post '/lists/:id' do
+        book = Book.find_or_create_by(title: params[:title], author: params[:author])
+        list = List.find(params[:id])
+        List.create(user_id: current_user.id, book_id: book.id, name: list.name)
+        @book.update(read: params[:read], notes: params[:notes])
+        redirect '/lists/#{@list.id}'
+    end
+
+    delete '/lists/:id' do
+        list.find(params[:id])
         list.delete
         redirect '/lists'
     end
