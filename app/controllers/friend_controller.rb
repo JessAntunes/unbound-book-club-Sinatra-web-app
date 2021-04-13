@@ -1,16 +1,16 @@
 class FriendController < ApplicationController
 
-    get '/friends' do
+    get '/friends' do             #this route works
         @user = current_user
         erb :'friend/all_friends'
     end
 
-    get '/friends/new' do
+    get '/friends/new' do       #this route works
         @user = current_user
         erb :'friend/new'
     end
 
-    post '/friends' do 
+    post '/friends' do        #this route works
         @user = current_user
         if friend = User.find_by(username: params[:username])
             @friend = Friend.create(user_id: @user.id, friend_id: friend.id)
@@ -20,7 +20,7 @@ class FriendController < ApplicationController
         end
     end
     
-    get '/friends/:friend_id' do
+    get '/friends/:friend_id' do  #this route works
         @user = current_user
         if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
             @friend = User.find(params[:friend_id])
@@ -30,7 +30,7 @@ class FriendController < ApplicationController
         end
     end
 
-    get "/friends/:friend_id/library" do
+    get "/friends/:friend_id/library" do      #friend_id isnt showing in params so shows /notfriends
         @user = current_user
         if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
             @friend = User.find(params[:friend_id])
@@ -45,7 +45,6 @@ class FriendController < ApplicationController
         if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
             @friend = User.find(params[:friend_id])
             @book = Book.find(params[:book_id])
-            @library = Library.find_by(user_id: @friend.id, book_id: @book_id) 
             erb :'friend/show_book'
         else 
             redirect '/notfriends'
