@@ -1,5 +1,13 @@
 <h1> Here are all your friends: </h1>
-
+<br>
+<h3>Friends who added you: </h3>
+<p>Click to view their library and lists.</p>
+<%Friend.where(friend_id: @user.id).each do |friend|%>
+<p><a href='/friends/<%=friend.user_id%>'><%=User.find(friend.user_id).username%></a></p>
+<%end%>
+<br>
+<h3>Friends you added: </h3>
+<p>(They can view your lists and library)</p>
 <%@user.friends.each do |friend|%>
 <p><a href='/friends/<%=friend.friend_id%>'><%=User.find(friend.friend_id).username%></a></p>
 <%end%>
@@ -7,5 +15,5 @@
 <form action="/friends/new">
     <input type="submit" value="Add Friend" />
 </form>
-
+<br>
 <p>If you do not see a specific friend on your list they have not added you as a friend yet.</p>
