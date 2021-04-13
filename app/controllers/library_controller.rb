@@ -21,7 +21,7 @@ class LibraryController < ApplicationController
     post '/library' do
         @book = Book.find_or_create_by(title: params[:title], author: params[:author])
         @library = Library.create(user_id: current_user.id, book_id: @book.id)
-        @book.update(read: params[:read, notes: params[:notes])
+        @book.update(read: params[:read], notes: params[:notes])
         redirect '/library/#{@book.id}'
     end
 
