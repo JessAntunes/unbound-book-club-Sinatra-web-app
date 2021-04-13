@@ -20,41 +20,41 @@ class FriendController < ApplicationController
         end
     end
     
-    get '/friends/:friend_id' do  #this route works
+    get '/friends/:user2_id' do  #this route works
         @user = current_user
-        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
-            @friend = User.find(params[:friend_id])
+        @friend = User.find(params[:user2_id])
+        if  @friend.friends.where(friend_id: @user.id)
             erb :'friend/index'
         else 
             redirect '/notfriends'
         end
     end
 
-    get "/friends/:friend_id/library" do      #friend_id isnt showing in params so shows /notfriends
+    get "/friends/:user2_id/library" do      #friend_id isnt showing in params so shows /notfriends
         @user = current_user
-        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
-            @friend = User.find(params[:friend_id])
+        @friend = User.find(params[:user2_id])
+        if  @friend.friends.where(friend_id: @user.id)
             erb :'friend/library_index'
         else 
             redirect '/notfriends'
         end
     end
 
-    get "/friends/:friend_id/library/:book_id" do
+    get "/friends/:user2_id/library/:book_id" do
         @user = current_user
-        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
-            @friend = User.find(params[:friend_id])
-            @book = Book.find(params[:book_id])
+        @friend = User.find(params[:user2_id])
+        if  @friend.friends.where(friend_id: @user.id)
+            @book = @friend.books.find(params[:book_id])
             erb :'friend/show_book'
         else 
             redirect '/notfriends'
         end
     end 
 
-    get "/friends/:friend_id/lists" do
+    get "/friends/:user2_id/lists" do
         @user = current_user
-        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
-            @friend = User.find(params[:friend_id])
+        @friend = User.find(params[:user2_id])
+        if  @friend.friends.where(friend_id: @user.id)
             @lists = List.find_by(user_id: @friend.id)
             erb :'friend/list_index'
         else 
@@ -62,10 +62,10 @@ class FriendController < ApplicationController
         end
     end
 
-    get "/friends/:friend_id/lists/:list_id" do
+    get "/friends/:user2_id/lists/:list_id" do
         @user = current_user
-        if Friend.find_by(user_id: params[:friend_id], friend_id: @user.id)
-            @friend = User.find(params[:friend_id])
+        @friend = User.find(params[:user2_id])
+        if  @friend.friends.where(friend_id: @user.id)
             @list = List.find(params[:list_id])
             erb :'friend/show_list'
         else 
@@ -73,9 +73,9 @@ class FriendController < ApplicationController
         end
     end
 
-    delete '/friends/:friend_id' do 
+    delete '/friends/:user2_id' do 
         @user = current_user
-        @friend = Friend.find_by(user_id: @user.id, friend_id: params[:friend_id])
+        @friend = Friend.find_by(user_id: @user.id, friend_id: params[:user2_id])
         @friend.delete
         redirect to '/friends'
     end

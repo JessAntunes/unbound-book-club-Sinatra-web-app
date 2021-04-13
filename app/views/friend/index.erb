@@ -2,10 +2,15 @@
 
 <h4>What would you like to do?</h4>
 
-<form action="/friends/:id/library">
+<form action="/friends/:user2_id/library">
     <input type="submit" value="View <%=@friend.username.capitalize%>'s Library" />
 </form>
 
 <form action="/friends/lists">
     <input type="submit" value="View <%=@friend.username.capitalize%>'s Lists" />
+</form>
+
+<form action="/friends/<%= @friend.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Remove Friend">
 </form>
