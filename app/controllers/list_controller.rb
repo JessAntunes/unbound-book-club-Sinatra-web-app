@@ -14,14 +14,14 @@ class ListController < ApplicationController
 
     get 'lists/:list_id' do
         @user = current_user
-        @lists = List.find(params[:list_id])
+        @list = List.find(params[:list_id])
         erb :'list/show'
     end
 
     post '/lists' do
         @book = Book.find_or_create_by(title: params[:title], author: params[:author])
         @list = List.create(user_id: current_user.id, book_id: @book.id, name: params[:name])
-        @book.update(read: params[:read, notes: params[:notes])
+        @book.update(read: params[:read], notes: params[:notes])
         redirect '/lists/#{@list.id}'
     end
 

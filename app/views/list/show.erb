@@ -5,7 +5,8 @@
 
 <h1> @list.name </h1>
 
-<%@list.books(@user.id, @list.name).each do |book| %>
+<%List.all.where(name: @list.name, user_id: @user.id).each do |list| %>
+<%book = Book.find(list.book_id)%>
 <p><a href="/library/<%=book.id%>"><%=book.title%></a></p>
 <%end%>
 

@@ -26,6 +26,7 @@ class LibraryController < ApplicationController
     end
 
     get '/library/:book_id/edit' do
+        @book = Book.find(params[:book_id])
         erb :'library/edit'
     end
 
