@@ -36,11 +36,17 @@ class LibraryController < ApplicationController
         redirect '/library/#{book.id}'
     end
 
-    delete '/library/:book_id' do
-        book.find(params[:book_id])
-        book.delete
+    delete '/library' do
+        current_user.books.destroy
         redirect '/library'
     end
+
+    delete '/library/:book_id' do
+        book = current_user.books.where(params[:book_id])
+        book.destroy
+        redirect '/library'
+    end
+
 
 
 end

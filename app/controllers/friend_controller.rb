@@ -40,7 +40,7 @@ class FriendController < ApplicationController
         end
     end
 
-    get "/friends/:user2_id/library/:book_id" do
+    get "/friends/library/:book_id" do
         @user = current_user
         @friend = User.find(params[:user2_id])
         if  @friend.friends.where(friend_id: @user.id)
@@ -74,8 +74,7 @@ class FriendController < ApplicationController
     end
 
     delete '/friends/:user2_id' do 
-        @user = current_user
-        @friend = Friend.find_by(user_id: @user.id, friend_id: params[:user2_id])
+        @friend = Friend.find_by(user_id: current_user.id, friend_id: params[:user2_id])
         @friend.delete
         redirect to '/friends'
     end
@@ -87,5 +86,6 @@ class FriendController < ApplicationController
     get '/nomatch' do
         erb :'friend/no_match'
     end
+
  
 end

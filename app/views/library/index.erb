@@ -8,6 +8,11 @@
 <p><a href="/library/<%=book.id%>"><%=book.title%></a></p>
 <%end%>
 
+<form action="/library" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Entire Library">
+</form>
+
 
 
 
